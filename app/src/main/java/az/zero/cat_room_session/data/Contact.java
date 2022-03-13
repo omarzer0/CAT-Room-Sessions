@@ -4,23 +4,18 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.google.gson.annotations.SerializedName;
+
 @Entity(tableName = "contact")
 public class Contact {
     @PrimaryKey(autoGenerate = true)
     private int id;
     private String name;
+    @SerializedName("phone_number")
     private String phone;
-    private int image;
+    private String image;
 
-    @Ignore
-    public Contact(int id, String name, String phone, int image) {
-        this.id = id;
-        this.name = name;
-        this.phone = phone;
-        this.image = image;
-    }
-
-    public Contact(String name, String phone, int image) {
+    public Contact(String name, String phone, String image) {
         this.name = name;
         this.phone = phone;
         this.image = image;
@@ -50,11 +45,11 @@ public class Contact {
         this.phone = phone;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

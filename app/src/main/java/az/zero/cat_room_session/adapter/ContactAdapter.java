@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.imageview.ShapeableImageView;
 
 import java.util.List;
@@ -36,7 +37,10 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
         Contact contact = contactList.get(position);
         holder.tvName.setText("" + contact.getName());
         holder.tvPhone.setText("" + contact.getPhone());
-        holder.ivImage.setImageResource(contact.getImage());
+
+        Glide.with(holder.ivImage.getContext())
+                .load(contact.getImage())
+                .into(holder.ivImage);
     }
 
     @Override
